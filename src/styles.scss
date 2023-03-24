@@ -1,6 +1,24 @@
 @use "reset";
 @use "fonts";
 
+@mixin mobile {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 768px) and (max-width: 1439px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1440px) {
+    @content;
+  }
+}
+
 html {
   --canvas-color: #F6F8FF;
 }
@@ -11,4 +29,14 @@ html.dark {
 
 body {
   background: var(--canvas-color);
+  padding-top: 31px;
+
+  @include tablet {
+    padding-top: 140px;
+  }
+
+  @include desktop {
+    padding-top: 0;
+    display: grid;
+  }
 }

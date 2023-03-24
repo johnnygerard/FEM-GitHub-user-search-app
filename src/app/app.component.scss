@@ -1,0 +1,16 @@
+@use 'styles' as *;
+
+:host {
+  display: block;
+  width: 87.2%;
+  margin: 0 auto;
+
+  @include tablet {
+    width: 74.6%;
+  }
+
+  @include desktop {
+    width: 730px;
+    margin: auto; // Center with body grid display
+  }
+}
