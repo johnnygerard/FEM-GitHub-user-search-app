@@ -1,2 +1,14 @@
 @use "reset";
 @use "fonts";
+
+html {
+  --canvas-color: #F6F8FF;
+}
+
+html.dark {
+  --canvas-color: #141D2F;
+}
+
+body {
+  background: var(--canvas-color);
+}
