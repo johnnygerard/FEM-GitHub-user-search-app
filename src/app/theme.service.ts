@@ -11,11 +11,11 @@ export class ThemeService {
       document.documentElement.classList.add("dark");
   }
 
-  get isDark() {
+  get isDark(): boolean {
     return this._isDark;
   }
 
-  toggleTheme() {
+  toggleTheme(): void {
     this._isDark = !this._isDark;
     document.documentElement.classList.toggle("dark");
   }
