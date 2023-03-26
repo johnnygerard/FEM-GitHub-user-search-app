@@ -4,7 +4,12 @@ import { Injectable } from "@angular/core";
   providedIn: "root",
 })
 export class ThemeService {
-  private _isDark = false;
+  private _isDark: boolean;
+
+  constructor() {
+    if ((this._isDark = matchMedia("(prefers-color-scheme: dark)").matches))
+      document.documentElement.classList.add("dark");
+  }
 
   get isDark() {
     return this._isDark;
