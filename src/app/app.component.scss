@@ -14,3 +14,16 @@
     margin: auto; // Center with body grid display
   }
 }
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-name {
+  color: var(--product-name-color);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 39px;
+}

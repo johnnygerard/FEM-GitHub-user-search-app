@@ -21,15 +21,22 @@
 
 html {
   --canvas-color: #F6F8FF;
-}
+  --theme-switch-color: #4B6A9B;
+  --theme-switch-color-hover: #222731;
+  --product-name-color: #222731;
 
-html.dark {
-  --canvas-color: #141D2F;
+  &.dark {
+    --canvas-color: #141D2F;
+    --theme-switch-color: white;
+    --theme-switch-color-hover: #90A4D4;
+    --product-name-color: white;
+  }
 }
 
 body {
   background: var(--canvas-color);
   padding-top: 31px;
+  font-family: "Space Mono", monospace;
 
   @include tablet {
     padding-top: 140px;
