@@ -19,17 +19,24 @@
   }
 }
 
+$accent-color: #0079FF;
+$accent-color-hover: #60ABFF;
+
 html {
   --canvas-color: #F6F8FF;
+  --background-color: #FEFEFE;
   --theme-switch-color: #4B6A9B;
   --theme-switch-color-hover: #222731;
   --product-name-color: #222731;
+  --body-color: #4B6A9B;
 
   &.dark {
     --canvas-color: #141D2F;
+    --background-color: #1E2A47;
     --theme-switch-color: white;
     --theme-switch-color-hover: #90A4D4;
     --product-name-color: white;
+    --body-color: white;
   }
 }
 
