@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, retry, Subject, throwError } from 'rxjs';
+import { finalize, Observable, retry, Subject, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -33,12 +33,11 @@ export class GitHubService {
               setTimeout(() => subscriber.next(true), 10 ** retryCount);
             });
           },
-        })
+        }),
+        finalize(() => this.loading = false),
       ).subscribe({
-        complete: () => this.loading = false,
         next: json => this.userInfoSubject.next(json),
         error: (error: HttpErrorResponse) => {
-          this.loading = false;
           // Log error and notify user
           console.error(error);
           alert('Failed to retrieve user info. Please try again later.');
