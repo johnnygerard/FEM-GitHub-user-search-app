@@ -40,7 +40,7 @@ export class GitHubService {
         error: (error: HttpErrorResponse) => {
           // Log error and notify user
           console.error(error);
-          alert('Failed to retrieve user info. Please try again later.');
+          alert('Unable to retrieve user info.\nPlease try again later.');
         },
       });
   }
