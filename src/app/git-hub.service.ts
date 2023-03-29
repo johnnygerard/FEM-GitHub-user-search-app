@@ -6,7 +6,8 @@ import { finalize, Observable, retry, Subject, throwError } from 'rxjs';
   providedIn: 'root',
 })
 export class GitHubService {
-  readonly userInfoSubject = new Subject<Object>();
+  readonly userInfo$ = new Subject<Object>();
+  readonly userNotFound$ = new Subject<boolean>();
   private loading = false;
 
   constructor(private client: HttpClient) { }
@@ -36,8 +37,16 @@ export class GitHubService {
         }),
         finalize(() => this.loading = false),
       ).subscribe({
-        next: json => this.userInfoSubject.next(json),
+        next: userInfo => {
+          this.userInfo$.next(userInfo);
+          this.userNotFound$.next(false);
+        },
         error: (error: HttpErrorResponse) => {
+          // Notify search bar component that user was not found
+          if (error.status === 404) {
+            this.userNotFound$.next(true);
+            return;
+          }
           // Log error and notify user
           console.error(error);
           alert('Unable to retrieve user info.\nPlease try again later.');

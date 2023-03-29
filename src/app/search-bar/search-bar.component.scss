@@ -37,6 +37,7 @@ input[type=search] {
   flex: 1;
 
   // Remove default styles
+  padding: 0;
   border: none;
   background: none;
   outline: none;
@@ -53,6 +54,13 @@ input[type=search] {
   @include mobile {
     font-size: 13px;
   }
+}
+
+.not-found {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 22px;
+  color: #F74646;
 }
 
 button {

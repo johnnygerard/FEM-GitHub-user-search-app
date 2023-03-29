@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { GitHubService } from '../git-hub.service';
 
 @Component({
@@ -6,10 +6,20 @@ import { GitHubService } from '../git-hub.service';
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss']
 })
-export class SearchBarComponent {
+export class SearchBarComponent implements OnInit, OnDestroy {
+  protected userNotFound = false;
+
   constructor(private github: GitHubService) { }
 
-  getUserInfo(username: string): void {
+  protected getUserInfo(username: string): void {
     this.github.getUserInfo(username);
+  }
+
+  ngOnInit(): void {
+    this.github.userNotFound$.subscribe(userNotFound => this.userNotFound = userNotFound);
+  }
+
+  ngOnDestroy(): void {
+    this.github.userNotFound$.unsubscribe();
   }
 }
