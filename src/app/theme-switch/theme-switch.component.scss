@@ -22,10 +22,12 @@ svg {
   fill: var(--theme-switch-color);
 }
 
-.switch:is(:hover, :focus-visible) > .label {
-  color: var(--theme-switch-color-hover);
-}
+.switch:is(:hover, :focus-visible) > {
+  & .label {
+    color: var(--theme-switch-color-hover);
+  }
 
-.switch:is(:hover, :focus-visible) > svg {
-  fill: var(--theme-switch-color-hover);
+  & svg {
+    fill: var(--theme-switch-color-hover);
+  }
 }
