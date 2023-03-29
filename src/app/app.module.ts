@@ -6,12 +6,14 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ThemeSwitchComponent } from './theme-switch/theme-switch.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { UserInfoComponent } from './user-info/user-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ThemeSwitchComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    UserInfoComponent
   ],
   imports: [
     BrowserModule,
