@@ -32,7 +32,7 @@ export class GitHubService {
             if (error.status) return throwError(() => error); // Forward HTTP errors
             return new Observable(subscriber => {
               // Retry request after increasing delay (10, 100, 1000 ms)
-              setTimeout(() => subscriber.next(true), 10 ** retryCount);
+              setTimeout(() => subscriber.next(), 10 ** retryCount);
             });
           },
         }),
