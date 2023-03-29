@@ -1,0 +1,92 @@
+@use "styles" as *;
+
+:host {
+  margin-top: 36px;
+  display: block;
+}
+
+@include mobile {
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+form {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  background: var(--background-color);
+  border-radius: 15px;
+  box-shadow: 0 16px 30px -10px rgba(70, 96, 187, 0.2);
+
+  padding: 10px {
+    left: 32px;
+  }
+
+  @include mobile {
+    gap: 8px;
+
+    padding: 7px {
+      left: 16px;
+    }
+  }
+}
+
+input[type=search] {
+  flex: 1;
+
+  // Remove default styles
+  padding: 0;
+  border: none;
+  background: none;
+  outline: none;
+
+  // Typography
+  font-size: 18px;
+  line-height: 25px;
+  color: var(--body-color);
+
+  &::placeholder {
+    color: var(--body-color);
+  }
+
+  @include mobile {
+    font-size: 13px;
+  }
+}
+
+.not-found {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 22px;
+  color: #F74646;
+}
+
+button {
+  border-radius: 10px;
+  cursor: pointer;
+  background: $accent-color;
+
+  &:hover,
+  &:focus-visible {
+    background: $accent-color-hover;
+  }
+
+  // Reset default styles
+  border: none;
+  padding: 12px 24px;
+
+  // Typography
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  color: white;
+
+  @include mobile {
+    font-size: 14px;
+    line-height: 21px;
+
+    padding: 12px 16px;
+  }
+}
