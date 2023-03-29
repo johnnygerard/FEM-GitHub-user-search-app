@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { GitHubService } from '../git-hub.service';
 
 @Component({
@@ -11,8 +12,8 @@ export class SearchBarComponent implements OnInit, OnDestroy {
 
   constructor(private github: GitHubService) { }
 
-  protected getUserInfo(username: string): void {
-    this.github.getUserInfo(username);
+  protected getUserInfo(username: string, form: NgForm): void {
+    this.github.getUserInfo(username, form);
   }
 
   ngOnInit(): void {
