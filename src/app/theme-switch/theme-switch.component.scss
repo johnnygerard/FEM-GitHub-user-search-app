@@ -2,10 +2,11 @@
   display: flex;
   gap: 16px;
   align-items: center;
+  cursor: pointer;
   // reset button styles
   background: none;
   border: none;
-  padding: 0;
+  padding: 12px 0;
 }
 
 .label {
@@ -21,10 +22,12 @@ svg {
   fill: var(--theme-switch-color);
 }
 
-.switch:is(:hover, :focus-visible) > .label {
-  color: var(--theme-switch-color-hover);
-}
+.switch:is(:hover, :focus-visible) > {
+  & .label {
+    color: var(--theme-switch-color-hover);
+  }
 
-.switch:is(:hover, :focus-visible) > svg {
-  fill: var(--theme-switch-color-hover);
+  & svg {
+    fill: var(--theme-switch-color-hover);
+  }
 }
