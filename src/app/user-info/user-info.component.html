@@ -1,34 +1,36 @@
-<img [src]="userInfo.avatar_url" alt>
-<hgroup>
-  <h1>{{ userInfo.name ?? userInfo.login }}</h1>
-  <p>@{{ userInfo.login }}</p>
-  <p>Joined {{ userInfo.created_at | date: 'd MMM y' }}</p>
-</hgroup>
-<p [innerHTML]="userInfo.bio ? linkify(userInfo.bio) : 'This profile has no bio'"></p>
-<dl>
-  <dt>Repos</dt>
-  <dd>{{ userInfo.public_repos }}</dd>
-  <dt>Followers</dt>
-  <dd>{{ userInfo.followers }}</dd>
-  <dt>Following</dt>
-  <dd>{{ userInfo.following }}</dd>
-</dl>
-<ul>
-  <!-- location -->
-  <li *ngIf="userInfo.location; else notAvailable">{{ userInfo.location }}</li>
-  <!-- website/blog -->
-  <li *ngIf="userInfo.blog; else notAvailable">
-    <a [href]="userInfo.blog" target="_blank">{{ userInfo.blog }}</a>
-  </li>
-  <!-- Twitter -->
-  <li *ngIf="userInfo.twitter_username; else notAvailable">
-    <a [href]="'https://twitter.com/' + userInfo.twitter_username" target="_blank">
-      @{{ userInfo.twitter_username }}
-    </a>
-  </li>
-  <!-- company -->
-  <li *ngIf="userInfo.company; else notAvailable" [innerHTML]="linkify(userInfo.company)"></li>
-</ul>
+<div [style.opacity]="loading ? 0 : 1">
+  <img [src]="userInfo.avatar_url" alt>
+  <hgroup>
+    <h1>{{ userInfo.name ?? userInfo.login }}</h1>
+    <p>@{{ userInfo.login }}</p>
+    <p>Joined {{ userInfo.created_at | date: 'd MMM y' }}</p>
+  </hgroup>
+  <p [innerHTML]="userInfo.bio ? linkify(userInfo.bio) : 'This profile has no bio'"></p>
+  <dl>
+    <dt>Repos</dt>
+    <dd>{{ userInfo.public_repos }}</dd>
+    <dt>Followers</dt>
+    <dd>{{ userInfo.followers }}</dd>
+    <dt>Following</dt>
+    <dd>{{ userInfo.following }}</dd>
+  </dl>
+  <ul>
+    <!-- location -->
+    <li *ngIf="userInfo.location; else notAvailable">{{ userInfo.location }}</li>
+    <!-- website/blog -->
+    <li *ngIf="userInfo.blog; else notAvailable">
+      <a [href]="userInfo.blog" target="_blank">{{ userInfo.blog }}</a>
+    </li>
+    <!-- Twitter -->
+    <li *ngIf="userInfo.twitter_username; else notAvailable">
+      <a [href]="'https://twitter.com/' + userInfo.twitter_username" target="_blank">
+        @{{ userInfo.twitter_username }}
+      </a>
+    </li>
+    <!-- company -->
+    <li *ngIf="userInfo.company; else notAvailable" [innerHTML]="linkify(userInfo.company)"></li>
+  </ul>
+</div>
 
 <ng-template #notAvailable>
   <li>Not Available</li>
