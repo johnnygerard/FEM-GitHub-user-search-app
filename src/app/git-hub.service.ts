@@ -15,7 +15,7 @@ export class GitHubService {
   constructor(private client: HttpClient) { }
 
   // Send GET request to fetch user info from GitHub REST API
-  getUserInfo(username: string, form: NgForm): void {
+  getUserInfo(username: string, form?: NgForm): void {
     // Prevent concurrent requests
     if (this.loading) return;
     this.loading = true;
@@ -42,7 +42,7 @@ export class GitHubService {
         next: userInfo => {
           this.userInfo$.next(userInfo);
           this.userNotFound$.next(false);
-          form.resetForm();
+          form?.resetForm();
         },
         error: (error: HttpErrorResponse) => {
           // Notify search bar component that user was not found

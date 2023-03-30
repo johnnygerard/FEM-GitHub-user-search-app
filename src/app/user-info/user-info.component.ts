@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { GitHubService } from '../git-hub.service';
 import type { UserInfo } from '../UserInfo';
 
@@ -7,28 +7,38 @@ import type { UserInfo } from '../UserInfo';
   templateUrl: './user-info.component.html',
   styleUrls: ['./user-info.component.scss']
 })
-export class UserInfoComponent implements OnInit {
-  // Set default user in case GitHub servers are unavailable
+export class UserInfoComponent implements OnInit, OnDestroy {
   protected userInfo: UserInfo = {
-    avatar_url: "https://avatars.githubusercontent.com/u/583231?v=4",
-    name: "The Octocat",
-    login: "octocat",
-    created_at: "2011-01-25T18:44:36Z",
+    avatar_url: '',
+    name: null,
+    login: '',
+    created_at: '',
     bio: null,
-    public_repos: 8,
-    followers: 8741,
-    following: 9,
-    location: "San Francisco!!",
-    blog: "https://github.blog",
+    public_repos: 0,
+    followers: 0,
+    following: 0,
+    location: null,
+    blog: null,
     twitter_username: null,
-    company: "@github",
+    company: null,
   };
+
+  // Opacity is set to 0 when loading is true except for the background
+  protected loading = true;
 
   constructor(private github: GitHubService) { }
 
   // Retrieve user info
   ngOnInit(): void {
-    this.github.userInfo$.subscribe(userInfo => this.userInfo = userInfo);
+    this.github.userInfo$.subscribe(userInfo => {
+      this.userInfo = userInfo;
+      this.loading = false;
+    });
+    this.github.getUserInfo('octocat');
+  }
+
+  ngOnDestroy(): void {
+    this.github.userInfo$.unsubscribe();
   }
 
   // Replace each @mention with a GitHub link
