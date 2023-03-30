@@ -2,12 +2,13 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { finalize, Observable, retry, Subject, throwError } from 'rxjs';
+import type { UserInfo } from './UserInfo';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GitHubService {
-  readonly userInfo$ = new Subject<Object>();
+  readonly userInfo$ = new Subject<UserInfo>();
   readonly userNotFound$ = new Subject<boolean>();
   private loading = false;
 
@@ -20,7 +21,7 @@ export class GitHubService {
     this.loading = true;
 
     this.client
-      .get(`https://api.github.com/users/${this.sanitize(username)}`, {
+      .get<UserInfo>(`https://api.github.com/users/${this.sanitize(username)}`, {
         headers: {
           Accept: 'application/vnd.github+json',
         },
