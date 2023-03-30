@@ -1,0 +1,13 @@
+@use 'styles' as *;
+
+:host {
+  background: var(--background-color);
+  display: block;
+  border-radius: 15px;
+  margin-top: 24px;
+  box-shadow: $box-shadow;
+
+  @include mobile {
+    margin-top: 16px;
+  }
+}
