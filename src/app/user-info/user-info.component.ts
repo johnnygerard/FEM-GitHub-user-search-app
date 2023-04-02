@@ -12,6 +12,7 @@ export class UserInfoComponent implements OnInit, OnDestroy {
     avatar_url: '',
     name: null,
     login: '',
+    html_url: '',
     created_at: '',
     bio: null,
     public_repos: 0,
@@ -39,23 +40,5 @@ export class UserInfoComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.github.userInfo$.unsubscribe();
-  }
-
-  // Replace each @mention with a GitHub link
-  protected linkify(text: string): string {
-    const sanitized = this.escape(text);
-
-    // GitHub username rules:
-    // - may only contain alphanumeric characters or hyphens
-    // - hyphens are surrounded by alphanumeric characters
-    // - length is between 1 and 39 characters
-    // - case insensitive
-    return sanitized.replaceAll(/@(?!-)(([a-z\d]|-(?!-)){1,39})(?<!-)(?![a-z\d-])/gi,
-      '<a href="https://github.com/$1" target="_blank">@$1</a>');
-  }
-
-  // Escape HTML special characters using decimal numeric character references
-  private escape(html: string): string {
-    return html.replaceAll(/&|<|>|"|'/g, match => `&#${match.charCodeAt(0)};`);
   }
 }

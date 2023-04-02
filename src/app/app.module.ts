@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { ThemeSwitchComponent } from './theme-switch/theme-switch.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { UserInfoComponent } from './user-info/user-info.component';
+import { GitHubMentionsDirective } from './git-hub-mentions.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     ThemeSwitchComponent,
     SearchBarComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    GitHubMentionsDirective
   ],
   imports: [
     BrowserModule,
