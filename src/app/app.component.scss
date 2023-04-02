@@ -4,9 +4,15 @@
   display: block;
   width: 87.2%;
   margin: 0 auto;
+  min-width: 305px;
+
+  @include mobile {
+    max-width: 480px;
+  }
 
   @include tablet {
     width: 74.6%;
+    max-width: 700px;
   }
 
   @include desktop {
