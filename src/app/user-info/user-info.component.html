@@ -1,6 +1,6 @@
 <div [style.opacity]="loading ? 0 : 1">
   <div class="header">
-    <img class="avatar" [src]="userInfo.avatar_url" alt>
+    <img class="avatar" [src]="userInfo.avatar_url" alt title="Avatar">
     <hgroup>
       <h1 class="username">{{ userInfo.name ?? userInfo.login }}</h1>
       <p class="handle-container">
