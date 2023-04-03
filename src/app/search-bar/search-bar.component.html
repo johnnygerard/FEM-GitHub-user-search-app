@@ -8,7 +8,7 @@
         fill="#0079ff" />
   </svg>
   <input #search (input)="userNotFound = false" type="search" name="username" ngModel
-      placeholder="Search GitHub username…" spellcheck="false" maxlength="39">
+      [placeholder]="inputLabel" [attr.aria-label]="inputLabel" spellcheck="false" maxlength="39">
   <span *ngIf="userNotFound" class="not-found">No results</span>
   <button type="submit">Search</button>
 </form>
