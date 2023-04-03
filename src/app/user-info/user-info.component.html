@@ -26,7 +26,7 @@
   <div class="social">
     <ul>
       <!-- location -->
-      <li>
+      <li [class.not-available]="!userInfo.location">
         <svg role="img" height="20" width="14" xmlns="http://www.w3.org/2000/svg">
           <title>Location</title>
           <path
@@ -35,8 +35,8 @@
         <span class="social-text"
             *ngIf="userInfo.location; else notAvailable">{{ userInfo.location }}</span>
       </li>
-      <!-- website/blog -->
-      <li>
+      <!-- Blog -->
+      <li [class.not-available]="!userInfo.blog">
         <svg role="img" height="20" width="20" xmlns="http://www.w3.org/2000/svg">
           <title>Blog</title>
           <path
@@ -50,7 +50,7 @@
     </ul>
     <ul>
       <!-- Twitter -->
-      <li>
+      <li [class.not-available]="!userInfo.twitter_username">
         <svg role="img" height="16" width="20" xmlns="http://www.w3.org/2000/svg">
           <title>Twitter</title>
           <path
@@ -62,7 +62,7 @@
         </a>
       </li>
       <!-- company -->
-      <li>
+      <li [class.not-available]="!userInfo.company">
         <svg role="img" height="20" width="20" xmlns="http://www.w3.org/2000/svg">
           <title>Company</title>
           <path
