@@ -83,6 +83,20 @@ header {
     font-size: 13px;
     line-height: 19px;
   }
+
+  &-container {
+    @include mobile {
+      margin-bottom: 6px;
+    }
+    
+    @include tablet {
+      margin: 2px 0 4px;
+    }
+
+    @include desktop {
+      margin-top: 2px;
+    }
+  }
 }
 
 .created-at {

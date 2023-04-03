@@ -3,7 +3,9 @@
     <img class="avatar" [src]="userInfo.avatar_url" alt>
     <hgroup>
       <h1 class="username">{{ userInfo.name ?? userInfo.login }}</h1>
-      <p><a class="handle" [href]="userInfo.html_url" target="_blank">@{{ userInfo.login }}</a></p>
+      <p class="handle-container">
+        <a class="handle" [href]="userInfo.html_url" target="_blank">@{{ userInfo.login }}</a>
+      </p>
       <p class="created-at">Joined {{ userInfo.created_at | date: 'd MMM y' }}</p>
     </hgroup>
   </header>
