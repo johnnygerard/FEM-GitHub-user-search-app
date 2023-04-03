@@ -69,7 +69,15 @@ button {
   cursor: pointer;
   background: $accent-color;
 
-  &:hover,
+  // Disable hover effect on touchscreen devices
+  @media(hover: hover) and (pointer: fine) {
+
+    &:hover {
+      background: $accent-color-hover;
+    }
+  }
+
+  &:active,
   &:focus-visible {
     background: $accent-color-hover;
   }
