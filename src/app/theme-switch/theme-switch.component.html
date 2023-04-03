@@ -1,5 +1,5 @@
-<button class="switch" (click)="toggleTheme()" role="switch" [attr.aria-checked]="isDark"
-    aria-label="Dark theme">
+<button type="button" class="switch" (click)="toggleTheme()" role="switch"
+    [attr.aria-checked]="isDark" aria-label="Dark theme">
   <span class="label">{{ isDark ? "light" : "dark" }}</span>
   <svg *ngIf="isDark; else moon" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
     <g fill-rule="nonzero">
