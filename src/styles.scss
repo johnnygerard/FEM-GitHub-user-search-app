@@ -26,15 +26,15 @@ html {
 
 body {
   background: var(--canvas-color);
-  padding-top: 31px;
+  padding: 31px 0;
   font-family: "Space Mono", monospace;
 
   @include tablet {
-    padding-top: 140px;
+    padding: 140px 0;
   }
 
   @include desktop {
-    padding-top: 0;
+    padding: 144px 0;
     display: grid;
   }
 }
