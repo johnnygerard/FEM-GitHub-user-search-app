@@ -1,5 +1,5 @@
 <div [style.opacity]="loading ? 0 : 1">
-  <header>
+  <div class="header">
     <img class="avatar" [src]="userInfo.avatar_url" alt>
     <hgroup>
       <h1 class="username">{{ userInfo.name ?? userInfo.login }}</h1>
@@ -8,7 +8,7 @@
       </p>
       <p class="created-at">Joined {{ userInfo.created_at | date: 'd MMM y' }}</p>
     </hgroup>
-  </header>
+  </div>
   <p class="bio" [class.bio-empty]="!userInfo.bio"
       [appGitHubMentions]="userInfo.bio ?? 'This profile has no bio'"></p>
   <dl class="stats">
