@@ -24,6 +24,7 @@ export class GitHubService {
       .get<UserInfo>(`https://api.github.com/users/${this.sanitize(username)}`, {
         headers: {
           Accept: 'application/vnd.github+json',
+          'X-GitHub-Api-Version': '2022-11-28',
         },
       }).pipe(
         // Only retry status 0 errors (network errors)
