@@ -1,26 +1,6 @@
 @use "reset";
 @use "fonts";
-
-@mixin mobile {
-  @media (max-width: 767px) {
-    @content;
-  }
-}
-
-@mixin tablet {
-  @media (min-width: 768px) and (max-width: 1439px) {
-    @content;
-  }
-}
-
-@mixin desktop {
-  @media (min-width: 1440px) {
-    @content;
-  }
-}
-
-$accent-color: #0079FF;
-$accent-color-hover: #60ABFF;
+@use "index" as *;
 
 html {
   --canvas-color: #F6F8FF;
@@ -29,6 +9,8 @@ html {
   --theme-switch-color-hover: #222731;
   --product-name-color: #222731;
   --body-color: #4B6A9B;
+  --username-digits-color: #2B3442;
+  --created-at-color: #697C9A;
 
   &.dark {
     --canvas-color: #141D2F;
@@ -37,6 +19,8 @@ html {
     --theme-switch-color-hover: #90A4D4;
     --product-name-color: white;
     --body-color: white;
+    --username-digits-color: white;
+    --created-at-color: white;
   }
 }
 

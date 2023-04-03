@@ -2,25 +2,26 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { finalize, Observable, retry, Subject, throwError } from 'rxjs';
+import type { UserInfo } from './UserInfo';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GitHubService {
-  readonly userInfo$ = new Subject<Object>();
+  readonly userInfo$ = new Subject<UserInfo>();
   readonly userNotFound$ = new Subject<boolean>();
   private loading = false;
 
   constructor(private client: HttpClient) { }
 
   // Send GET request to fetch user info from GitHub REST API
-  getUserInfo(username: string, form: NgForm): void {
+  getUserInfo(username: string, form?: NgForm): void {
     // Prevent concurrent requests
     if (this.loading) return;
     this.loading = true;
 
     this.client
-      .get(`https://api.github.com/users/${this.sanitize(username)}`, {
+      .get<UserInfo>(`https://api.github.com/users/${this.sanitize(username)}`, {
         headers: {
           Accept: 'application/vnd.github+json',
         },
@@ -41,7 +42,7 @@ export class GitHubService {
         next: userInfo => {
           this.userInfo$.next(userInfo);
           this.userNotFound$.next(false);
-          form.resetForm();
+          form?.resetForm();
         },
         error: (error: HttpErrorResponse) => {
           // Notify search bar component that user was not found
