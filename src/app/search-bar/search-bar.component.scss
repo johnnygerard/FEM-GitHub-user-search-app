@@ -35,6 +35,7 @@ form {
 
 input[type=search] {
   flex: 1;
+  min-width: 0; // Prevents overflow when no results are found
 
   // Remove default styles
   padding: 0;
