@@ -9,6 +9,7 @@ import { GitHubService } from '../git-hub.service';
 })
 export class SearchBarComponent implements OnInit, OnDestroy {
   protected userNotFound = false;
+  protected readonly inputLabel = 'Search GitHub username…';
 
   constructor(private github: GitHubService) { }
 
