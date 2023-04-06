@@ -15,7 +15,7 @@ export class AttributionComponent implements AfterViewInit {
     setTimeout(() => {
       this.hidden = false;
       this.dialog.nativeElement.showModal();
-    }, 500);
+    }, 1000);
   }
 
   protected onClick(event: MouseEvent): void {
