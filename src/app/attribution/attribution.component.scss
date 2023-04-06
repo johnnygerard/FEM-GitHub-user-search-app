@@ -1,0 +1,39 @@
+@use 'index' as *;
+
+@keyframes fade-in {
+  to {
+    backdrop-filter: blur(4px);
+    background: #0008;
+  }
+}
+
+dialog {
+  margin: auto; // Center dialog
+  border: none;
+  text-align: center;
+  background: none;
+  color: #FFF;
+  font-size: 1.2rem;
+
+  @include tablet {
+    font-size: 1.6rem;
+  }
+
+  @include desktop {
+    font-size: 1.8rem;
+  }
+
+  &::backdrop {
+    animation: ease-out 1s fade-in forwards;
+  }
+}
+
+a {
+  color: #0FF;
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: underline;
+  }
+}
